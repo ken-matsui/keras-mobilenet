@@ -26,6 +26,7 @@ def main(_):
     img_channels = 3
 
     # channel last -> (~/.keras/keras.json)
+    # TODO: MobileNetV2.Dense.activation = sigmoid
     model = MobileNetV2(input_shape=(img_rows, img_cols, img_channels),
                         weights=None, classes=1)  # Binary classification
     # plot_model(model, to_file='model.png', show_shapes=True)
