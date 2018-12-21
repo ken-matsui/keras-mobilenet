@@ -23,7 +23,7 @@ def main(_):
     # input image dimensions
     img_rows, img_cols = 400, 400
     # Images are RGB.
-    img_channels = 3
+    img_channels = 1
 
     # channel last -> (~/.keras/keras.json)
     model = MobileNetV2(input_shape=(img_rows, img_cols, img_channels),
