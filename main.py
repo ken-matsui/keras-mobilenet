@@ -6,7 +6,7 @@ import tensorflow as tf
 from tensorflow.python.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.python.keras.callbacks import ReduceLROnPlateau, EarlyStopping, TensorBoard
 from tensorflow.python.keras.utils import plot_model
-from tensorflow.python.keras.applications.mobilenet_v2 import MobileNetV2
+from tensorflow.python.keras.applications.mobilenet import MobileNet
 import numpy as np
 
 
@@ -26,8 +26,8 @@ def main(_):
     img_channels = 1
 
     # channel last -> (~/.keras/keras.json)
-    model = MobileNetV2(input_shape=(img_rows, img_cols, img_channels),
-                        weights=None, classes=5)  # Binary classification
+    model = MobileNet(input_shape=(img_rows, img_cols, img_channels),
+                      weights=None, classes=5)  # Binary classification
     # plot_model(model, to_file='model.png', show_shapes=True)
     model.compile(loss='categorical_crossentropy',  # when multiclass classification, loss is categorical_crossentropy
                   optimizer='adam',
@@ -36,7 +36,7 @@ def main(_):
     callbacks = list()
     callbacks.append(ReduceLROnPlateau(factor=np.sqrt(0.1), cooldown=0, patience=5, min_lr=0.5e-6))
     callbacks.append(EarlyStopping(min_delta=0.001, patience=10))
-    callbacks.append(TensorBoard(histogram_freq=1,
+    callbacks.append(TensorBoard(histogram_freq=0,
                                  write_graph=False,
                                  write_grads=True,
                                  write_images=True,

@@ -1,0 +1,5 @@
+Flask==1.0.2
+Keras==2.2.2
+opencv-python==3.4.4.19
+tensorflow==1.10.0
+gunicorn==19.7.1
